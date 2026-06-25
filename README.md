@@ -99,8 +99,6 @@ struct Equipment
 
 ## Module 3: Reservation Management
 
-This is the heart of the system.
-
 ### Features
 
 * Reserve equipment
