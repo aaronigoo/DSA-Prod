@@ -282,25 +282,3 @@ User interaction
 ```
 
 ---
-
-# Minimum Viable Version (Recommended)
-
-If your group is short on time, implement these first:
-
-✅ Sign Up/Login
-
-✅ View Equipment
-
-✅ Reserve Equipment
-
-✅ View Reservations
-
-✅ Change Reservation Time
-
-✅ Cancel Reservation
-
-✅ Save and Load Data from Files
-
-✅ Linked List for Reservations
-
-Once that works, you can always add stacks, queues, or trees later as bonus features if your instructor requires demonstrating those topics. This approach keeps the project manageable while still showing proper use of classes, structures, linked lists, file handling, and ADTs.
