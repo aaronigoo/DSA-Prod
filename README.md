@@ -1,5 +1,3 @@
----
-
 # Project Plan
 
 **Sports Equipment Rental System**
@@ -16,7 +14,6 @@ Develop a console-based C++ application where users can:
 * Cancel reservations
 * View reservation records
 
----
 
 # System Modules
 
