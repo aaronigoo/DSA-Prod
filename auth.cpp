@@ -36,30 +36,28 @@ void signUp() {
     string password;
     string existingPassword;
 
-    cout << "Enter username: ";
-    cin >> username;
-    cout << "Enter password: ";
-    cin >> password;
+    readText("Enter username: ", username);
+    readText("Enter password: ", password);
 
     if (hasComma(username) || hasComma(password)) {
-        cout << "Username and password cannot contain commas." << endl;
+        showError("Username and password cannot contain commas.");
         return;
     }
 
     if (findUser(username, existingPassword)) {
-        cout << "Username already exists. Please choose\nanother name or log in instead." << endl;
+        showError("Username already exists. Please choose another name or log in instead.");
         return;
     }
 
     ofstream outFile("files/users", ios::app);
 
     if (!outFile.is_open()) {
-        cout << "Unable to open users file." << endl;
+        showError("Unable to open users file.");
         return;
     }
 
     outFile << username << "," << password << endl;
-    cout << "Sign up successful. You may now log in." << endl;
+    showMessage("Sign up successful. You may now log in.");
 }
 
 int logIn(string &user) {
@@ -67,26 +65,24 @@ int logIn(string &user) {
     string password;
     string savedPassword;
 
-    cout << "Enter username: ";
-    cin >> username;
-    cout << "Enter password: ";
-    cin >> password;
+    readText("Enter username: ", username);
+    readText("Enter password: ", password);
 
     if (!findUser(username, savedPassword) || savedPassword != password) {
-        cout << "Invalid username or password." << endl;
+        showError("Invalid username or password.");
         return 0;
     }
 
     ofstream outFile("files/userdata");
 
     if (!outFile.is_open()) {
-        cout << "Unable to save logged in user." << endl;
+        showError("Unable to save logged in user.");
         return 0;
     }
 
     outFile << username << endl;
     user = username;
-    cout << "Login successful." << endl;
+    showMessage("Login successful.");
     return 1;
 }
 
@@ -94,13 +90,13 @@ void forgotPassword() {
     string username;
     string password;
 
-    cout << "Enter username: ";
-    cin >> username;
+    readText("Enter username: ", username);
 
     if (findUser(username, password)) {
         cout << "Your password is: " << password << endl;
+        pauseScreen();
     } else {
-        cout << "Username not found." << endl;
+        showError("Username not found.");
     }
 }
 
@@ -116,5 +112,5 @@ int getUser(string &user) {
 
 void logOut() {
     remove("files/userdata");
-    cout << "Logged out successfully." << endl;
+    showMessage("Logged out successfully.");
 }

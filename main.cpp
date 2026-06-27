@@ -9,9 +9,12 @@ int main(){
     
     while (true) {
         if (!loginStatus) {
+            clearScreen();
             displayAuth();
-            cin >> choice;
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            if (!readIntOnce("", choice)) {
+                continue;
+            }
+            clearScreen();
 
             switch(choice) {
                 case 1:
@@ -26,23 +29,26 @@ int main(){
                 case 4:
                     return 0;
                 default:
-                    cout << "Invalid Input. Please try again." << endl;
+                    showError("Invalid Input. Please try again.");
                     break;
             }
         } else {
+            clearScreen();
             displayMenu(user);
-            cin >> choice;
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            if (!readIntOnce("", choice)) {
+                continue;
+            }
+            clearScreen();
 
             switch(choice) {
                 case 1:
-                    cout << "Rent Equipment feature is not available yet." << endl;
+                    rentEquipment(user);
                     break;
                 case 2:
-                    cout << "Return Equipment feature is not available yet." << endl;
+                    returnEquipment(user);
                     break;
                 case 3:
-                    cout << "Rental History feature is not available yet." << endl;
+                    viewRentalHistory(user);
                     break;
                 case 4:
                     logOut();
@@ -52,7 +58,7 @@ int main(){
                 case 5:
                     return 0;
                 default:
-                    cout << "Invalid Input. Please try again." << endl;
+                    showError("Invalid Input. Please try again.");
                     break;
             }
             
