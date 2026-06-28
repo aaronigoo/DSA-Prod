@@ -8,6 +8,22 @@ bool hasComma(string text) {
     return text.find(',') != string::npos;
 }
 
+bool hasUnsafeUsernameCharacter(string username) {
+    string unsafeCharacters = ",/\\:*?\"<>|";
+
+    for (size_t index = 0; index < username.length(); index++) {
+        if (unsafeCharacters.find(username[index]) != string::npos) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool isValidUsername(string username) {
+    return !username.empty() && !hasUnsafeUsernameCharacter(username);
+}
+
 bool findUser(string username, string &password) {
     ifstream inFile("files/users");
     string line;
@@ -39,8 +55,18 @@ void signUp() {
     readText("Enter username: ", username);
     readText("Enter password: ", password);
 
-    if (hasComma(username) || hasComma(password)) {
-        showError("Username and password cannot contain commas.");
+    if (username.empty()) {
+        showError("Username cannot be empty.");
+        return;
+    }
+
+    if (!isValidUsername(username)) {
+        showError("Username cannot contain commas or file path characters.");
+        return;
+    }
+
+    if (hasComma(password)) {
+        showError("Password cannot contain commas.");
         return;
     }
 

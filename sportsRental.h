@@ -6,7 +6,6 @@
 #include <fstream>
 #include <cstdio>
 #include <limits>
-#include <vector>
 #include <queue>
 #include <stack>
 #include <sstream>
@@ -30,14 +29,19 @@ struct Equipment {
 };
 
 struct Rental {
-    string username;
     string equipment;
     double totalCost;
-    int startMonth;
-    int startDay;
-    int endMonth;
-    int endDay;
     int returned;
+};
+
+struct EquipmentNode {
+    Equipment data;
+    EquipmentNode* next;
+};
+
+struct RentalNode {
+    Rental data;
+    RentalNode* next;
 };
 
 // ======================================================
