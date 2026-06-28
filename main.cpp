@@ -42,13 +42,13 @@ int main(){
 
             switch(choice) {
                 case 1:
-                    rentEquipment(user);
+                    //rentEquipment(user); //remove comment for your own function.
                     break;
                 case 2:
-                    returnEquipment(user);
+                    //returnEquipment(user); //remove comment for your own function.
                     break;
                 case 3:
-                    viewRentalHistory(user);
+                    //viewRentalHistory(user); //remove comment for your own function.
                     break;
                 case 4:
                     logOut();
