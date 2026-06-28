@@ -48,6 +48,9 @@ struct RentalNode {
 // UTIL FUNCTIONS
 // ======================================================
 
+bool toInt(string text, int &value);
+bool toDouble(string text, double &value);
+bool containsComma(string text);
 void readInt(string prompt, int &value);
 bool readIntOnce(string prompt, int &value);
 void readText(string prompt, string &value);
@@ -55,6 +58,18 @@ void clearScreen();
 void pauseScreen();
 void showMessage(string message);
 void showError(string message);
+void addEquipmentNode(EquipmentNode* &head, EquipmentNode* &tail, Equipment equipment);
+void addRentalNode(RentalNode* &head, RentalNode* &tail, Rental rental);
+void deleteEquipmentList(EquipmentNode* head);
+void deleteRentalList(RentalNode* head);
+EquipmentNode* loadEquipments();
+bool saveEquipments(EquipmentNode* equipments);
+void ensureRentalFolderExists();
+string getUserRentalFile(string username);
+RentalNode* loadRentals(string username);
+bool saveRentals(string username, RentalNode* rentals);
+EquipmentNode* findEquipment(EquipmentNode* equipments, string equipmentName);
+void displayRental(Rental rental);
 
 // ======================================================
 // DISPLAY FUNCTIONS
