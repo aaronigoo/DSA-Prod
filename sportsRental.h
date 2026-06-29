@@ -62,6 +62,7 @@ void addEquipmentNode(EquipmentNode* &head, EquipmentNode* &tail, Equipment equi
 void addRentalNode(RentalNode* &head, RentalNode* &tail, Rental rental);
 void deleteEquipmentList(EquipmentNode* head);
 void deleteRentalList(RentalNode* head);
+void deleteReturnedRentalHistory(string username);
 EquipmentNode* loadEquipments();
 bool saveEquipments(EquipmentNode* equipments);
 void ensureRentalFolderExists();

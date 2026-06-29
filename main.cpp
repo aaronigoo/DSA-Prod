@@ -51,11 +51,14 @@ int main(){
                     viewRentalHistory(user);
                     break;
                 case 4:
+                    deleteReturnedRentalHistory(user);
+                    break;
+                case 5:
                     logOut();
                     user = "";
                     loginStatus = 0;
                     break;
-                case 5:
+                case 6:
                     return 0;
                 default:
                     showError("Invalid Input. Please try again.");

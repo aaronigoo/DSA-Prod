@@ -23,8 +23,9 @@ void displayMenu(string user) {
     cout << "[1] - Rent Equipment" << endl;
     cout << "[2] - Return Equipment" << endl;
     cout << "[3] - View Rental History" << endl;
-    cout << "[4] - Log Out" << endl;
-    cout << "[5] - Exit" << endl;
+    cout << "[4] - Delete Returned Rental History" << endl;
+    cout << "[5] - Log Out" << endl;
+    cout << "[6] - Exit" << endl;
     cout << "==========================================" << endl;
     cout << "Your Choice: ";
 

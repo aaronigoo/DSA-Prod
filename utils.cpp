@@ -162,6 +162,45 @@ void deleteRentalList(RentalNode* head) {
 }
 
 // Parent: utils.cpp
+// Function: Deletes returned rentals from one user's rental history.
+// How it works: Keeps only records that are not returned, then saves the filtered list.
+void deleteReturnedRentalHistory(string username) {
+    RentalNode* rentals = loadRentals(username);
+    RentalNode* filteredRentals = NULL;
+    RentalNode* filteredTail = NULL;
+    RentalNode* current = rentals;
+    int deletedCount = 0;
+
+    while (current != NULL) {
+        if (current->data.returned == 0) {
+            addRentalNode(filteredRentals, filteredTail, current->data);
+        } else {
+            deletedCount++;
+        }
+
+        current = current->next;
+    }
+
+    if (deletedCount == 0) {
+        deleteRentalList(rentals);
+        deleteRentalList(filteredRentals);
+        showMessage("No returned rental history to delete.");
+        return;
+    }
+
+    if (!saveRentals(username, filteredRentals)) {
+        deleteRentalList(rentals);
+        deleteRentalList(filteredRentals);
+        showError("Unable to delete returned rental history.");
+        return;
+    }
+
+    deleteRentalList(rentals);
+    deleteRentalList(filteredRentals);
+    showMessage("Returned rental history deleted.");
+}
+
+// Parent: utils.cpp
 // Function: Loads equipment records from the equipment file.
 // How it works: Reads each comma-separated line and stores valid records in a linked list.
 EquipmentNode* loadEquipments() {
